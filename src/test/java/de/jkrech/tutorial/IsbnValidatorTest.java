@@ -8,14 +8,9 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class IsbnValidatorTest {
-	
-    @ParameterizedTest
-    @NullAndEmptySource
-    void shouldThrowException(String invalidValue) {
-        assertThrows(IllegalArgumentException.class, () -> Isbn.of(invalidValue));
-    }
     
     @ParameterizedTest
+    @NullAndEmptySource
     @ValueSource(strings = {"invalid", "3-598-21508-0"})
     void shouldThrowExceptionWhenIsbnIsInvalid(String invalidValue) {
         assertThrows(IllegalArgumentException.class, () -> Isbn.of(invalidValue));
