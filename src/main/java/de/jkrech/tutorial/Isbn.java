@@ -2,6 +2,7 @@ package de.jkrech.tutorial;
 
 import java.util.Objects;
 
+@ValueObject
 public class Isbn {
 
 	private String value;

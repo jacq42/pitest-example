@@ -8,8 +8,8 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class IsbnValidatorTest {
-    
-    @ParameterizedTest
+
+	@ParameterizedTest
     @NullAndEmptySource
     @ValueSource(strings = {"invalid", "3-598-21508-0"})
     void shouldThrowExceptionWhenIsbnIsInvalid(String invalidValue) {
