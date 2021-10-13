@@ -11,13 +11,13 @@ class IsbnValidatorTest {
 
 	@ParameterizedTest
     @NullAndEmptySource
-    @ValueSource(strings = {"invalid", "3-598-21508-0"})
+    @ValueSource(strings = {"invalid", "3-598-21508-9", "3-680-08783-0"})
     void shouldThrowExceptionWhenIsbnIsInvalid(String invalidValue) {
         assertThrows(IllegalArgumentException.class, () -> Isbn.of(invalidValue));
     }
     
     @ParameterizedTest
-    @ValueSource(strings = {"3-598-21508-8"})
+    @ValueSource(strings = {"3-598-21508-8", "3-680-08783-7"})
     void shouldReturnIsbn(String validIsbn) {
         assertEquals(validIsbn, Isbn.of(validIsbn).value());
     }
