@@ -1,0 +1,247 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background="rgba(20, 20, 20, 0.7)">
+                    <h2>Mutation testing</h2>
+                    <p>how to deal with mutants</p>
+                    <p><span style="font-size: medium">
+                        Background photo by <a href="https://unsplash.com/@pawel_czerwinski?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Pawel Czerwinski</a> 
+                        on <a href="https://unsplash.com/s/photos/abstract-background?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+                    </span></p>
+                </section>
+				<section data-background="rgba(20, 20, 20, 0.7)">
+				    <section>
+				        <h2>What is mutation testing?</h2>
+				        <p class="fragment">
+				            The number of tests says nothing about their quality
+                        </p>
+                        <p class="fragment">
+                            100% coverage with no assertions finds no errors in the code 
+                        </p>
+				    </section>
+				    <section>
+				        <p>
+                            Tests verify the code ...
+                        </p>
+                        <p class="fragment">
+                            ... Mutation testing verify the quality of the tests
+                        </p>
+				    </section>
+				</section>
+				<section data-background="rgba(20, 20, 20, 0.7)">
+                    <section data-auto-animate>
+                        <h2>How does it work?</h2>
+                        <pre data-id="code"><code class="hljs" data-trim data-line-numbers="1">
+                            given: all tests are green
+                            
+                            when: creating a mutant 
+                            // means: change the sourcecode
+                            
+                            expect: at least one test should fail
+                            // means: mutant was killed
+                        </code></pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h2>How does it work?</h2>
+                        <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3">
+                            given: all tests are green
+                            
+                            when: creating a mutant 
+                            // means: change the sourcecode
+                            
+                            expect: at least one test should fail
+                            // means: mutant was killed
+                        </code></pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h2>How does it work?</h2>
+                        <pre data-id="code"><code class="hljs" data-trim data-line-numbers="6">
+                            given: all tests are green
+                            
+                            when: creating a mutant 
+                            // means: change the sourcecode
+                            
+                            expect: at least one test should fail
+                            // means: mutant was killed
+                        </code></pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h2>How does it work?</h2>
+                        <pre data-id="code"><code class="hljs" data-trim data-line-numbers>
+                            given: all tests are green
+                            
+                            when: creating a mutant 
+                            // means: change the sourcecode
+                            
+                            expect: at least one test should fail
+                            // means: mutant was killed
+                        </code></pre>
+                        <p><span style="color:red">If all tests are still green, the mutant survived</span></p>
+                    </section>
+                    <section>
+                        <img src="the-blowup-km5_ZJThpMc-unsplash.jpg" alt="person in white dress with red yellow and green face paint" width="80%"/>
+                        <br/>
+                        <span style="font-size: medium;">
+                            Photo by <a href="https://unsplash.com/@theblowup?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">the blowup</a> 
+                            on <a href="https://unsplash.com/s/photos/zombie?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+                        </span>
+                    </section>
+                    <section>
+                        <p>Your mission, developer, should you decide to accept it, kill the mutants</p>
+                    </section>
+                </section>
+                <section data-background="rgba(20, 20, 20, 0.7)">
+                    <section data-auto-animate>
+                        <h2>Mutatoren (examples)</h2>
+                        <p>Conditional boundary</p>
+                        <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3">
+                            // original sourcecode
+                            
+                            if (a < b) {
+                                // do some stuff
+                            }
+                        </code></pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h2>Mutatoren (examples)</h2>
+                        <p>Conditional boundary</p>
+                        <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3">
+                            // first mutant
+                            
+                            if (a <= b) {
+                                // do some stuff
+                            }
+                        </code></pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h2>Mutatoren (examples)</h2>
+                        <p>Conditional boundary</p>
+                        <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3">
+                            // second mutant
+                            
+                            if (a > b) {
+                                // do some stuff
+                            }
+                        </code></pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h2>Mutatoren (examples)</h2>
+                        <p>Conditional boundary</p>
+                        <pre data-id="code"><code class="hljs" data-trim  data-line-numbers="3">
+                            // third mutant
+                            
+                            if (true) {
+                                // do some stuff
+                            }
+                        </code></pre>
+                    </section>
+                </section>
+                <section data-background="rgba(20, 20, 20, 0.7)">
+                    <section data-auto-animate>
+                        <h2>Mutatoren (examples)</h2>
+                        <p>Arithmetic Operator Replacement</p>
+                        <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3">
+                            // original sourcecode
+                            
+                            a = b + c
+                        </code></pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h2>Mutatoren (examples)</h2>
+                        <p>Arithmetic Operator Replacement</p>
+                        <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3">
+                            // mutant
+                            
+                            a = b - c
+                        </code></pre>
+                    </section>
+                </section>
+                <section data-background="rgba(20, 20, 20, 0.7)">
+                    <section data-auto-animate>
+                        <h2>Mutatoren (examples)</h2>
+                        <p>Return values</p>
+                        <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3">
+                            // original sourcecode
+                            
+                            return x
+                        </code></pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h2>Mutatoren (examples)</h2>
+                        <p>Return values</p>
+                        <pre data-id="code"><code class="hljs" data-trim data-line-numbers="3">
+                            // mutant
+                            
+                            return x != null ? null : new RuntimeException()
+                        </code></pre>
+                    </section>
+                </section>
+                <section data-background="rgba(20, 20, 20, 0.7)">
+                    <section data-auto-animate>
+                        <h2>pitest</h2>
+                        <p>Mutation testing framework for Java and the jvm</p>
+                        <p><a href="https://pitest.org">https://pitest.org</a></p>
+                        <p class="fragment">Gradle Plugin: <a href="https://gradle-pitest.solidsoft.info">https://gradle-pitest.solidsoft.info</a></p>
+                    </section>
+                    <section data-auto-animate>
+                        <h2>pitest</h2>
+                        <pre data-id="code-pitest"><code class="hljs" data-trim data-line-numbers>
+                            pitest {
+                                pitestVersion = '1.7.1'
+                                testPlugin = 'junit5'
+                                junit5PluginVersion = '0.15'
+                                    
+                                targetClasses = ['org.example.*']
+                                excludedClasses = ['org.example.config.*']
+                                excludedMethods = ['equals', 'hashCode', 'toString']
+                                threads = 4
+                                outputFormats = ['HTML']
+                                timestampedReports = false
+                                mutators = ['DEFAULTS']
+                            }
+                        </code></pre>
+                    </section>
+                </section>
+                <section data-background="rgba(20, 20, 20, 0.7)">
+                    <section>
+                        <h2>pitest Report</h2>
+                        <p>to be continued</p>
+                    </section>
+                </section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [ RevealHighlight, RevealNotes ],
+				
+                parallaxBackgroundImage: 'pawel-czerwinski-prMn9KINLtI-unsplash.jpg',
+                parallaxBackgroundSize: '2400px 1600px'
+                //parallaxBackgroundHorizontal: 200,
+                //parallaxBackgroundVertical: 50
+			});
+			
+			//Reveal.slide(0)
+		</script>
+	</body>
+</html>
