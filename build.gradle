@@ -4,7 +4,7 @@ plugins {
 }
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
@@ -29,10 +29,10 @@ pitest {
 
   targetClasses = ['de.jkrech.tutorial.*']
   //excludedClasses = ['de.jkrech.tutorial.config.*']
-  //excludedMethods = ['equals', 'hashCode', 'toString']
+  //excludedMethods = ['equals', 'hashCode', 'toString'
+  //excludedTestClasses = ['de.jkrech.tutorial.**.*IntegrationTest']
   threads = 4
   outputFormats = ['HTML']
   timestampedReports = false
   mutators = ['DEFAULTS']  // groups: OLD_DEFAULTS, DEFAULTS, STRONGER, ALL
 }
-
