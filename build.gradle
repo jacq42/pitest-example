@@ -23,13 +23,13 @@ test {
 // https://github.com/szpak/gradle-pitest-plugin
 pitest {
   // Config params: https://pitest.org/quickstart/commandline/
-  testPlugin = 'junit5' // Bei Auskommentierung des testPlugins wird junit4 verwendet
-  pitestVersion = '1.7.1'  //for Java 11 compatibility with gradle-pitest-plugin 1.3.0
-  junit5PluginVersion = '0.15' // //adds dependency to org.pitest:pitest-junit5-plugin and sets "testPlugin" to "junit5"
+  testPlugin = 'junit5'
+  pitestVersion = '1.7.1'
+  junit5PluginVersion = '0.15'
 
   targetClasses = ['de.jkrech.tutorial.*']
   //excludedClasses = ['de.jkrech.tutorial.config.*']
-  //excludedMethods = ['equals', 'hashCode', 'toString'
+  //excludedMethods = ['equals', 'hashCode', 'toString']
   //excludedTestClasses = ['de.jkrech.tutorial.**.*IntegrationTest']
   threads = 4
   outputFormats = ['HTML']
