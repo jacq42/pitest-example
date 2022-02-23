@@ -1,6 +1,6 @@
 package de.jkrech.tutorial;
 
-public class IsbnValidator {
+class IsbnValidator {
 	
 	/**
 	 * Validate as ISBN-10
