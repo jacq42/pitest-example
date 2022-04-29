@@ -1,0 +1,40 @@
+name: Dependabot auto merge
+
+concurrency:
+  group: dependabot
+  cancel-in-progress: false
+
+permissions:
+  id-token: write
+  pull-requests: write
+  contents: write
+
+on: pull_request_target
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v1.3.1
+        with:
+          github-token: "${{ secrets.GH_TOKEN }}"
+
+      - name: Checkout PR Branch
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Build and test
+        uses: eskatos/gradle-command-action@v1.3.3
+        with:
+          arguments: clean build
+          
+      - name: Enable auto merge for Dependabot PRs
+        if: ${{steps.metadata.outputs.update-type != 'version-update:semver-major'}}
+        run: gh pr merge --auto --squash "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GH_TOKEN}}
