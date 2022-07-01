@@ -23,10 +23,24 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: gradle clean pitest
+      - name: gradle check pitest
         uses: eskatos/gradle-command-action@v2.2.1
         with:
-          arguments: clean pitest
+          arguments: check pitest
+
+      - name: Upload PIT report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: PITEST Mutation Test Report
+          path: build/reports/pitest
+
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: Test Report
+          path: build/reports/tests
 
       - name: Generate test report
         uses: EnricoMi/publish-unit-test-result-action@v1
