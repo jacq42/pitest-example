@@ -8,6 +8,7 @@ permissions:
   id-token: write
   pull-requests: write
   contents: write
+  issues: read
 
 on: pull_request_target
 
@@ -31,6 +32,13 @@ jobs:
         uses: eskatos/gradle-command-action@v2.2.1
         with:
           arguments: clean build
+
+      - name: Generate test report
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
+        with:
+          check_name: Test Results
+          files: ./**/build/test-results/TEST-*.xml
           
       - name: Enable auto merge for Dependabot PRs
         if: ${{steps.metadata.outputs.update-type != 'version-update:semver-major'}}
