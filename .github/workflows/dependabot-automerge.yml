@@ -9,6 +9,7 @@ permissions:
   pull-requests: write
   contents: write
   issues: read
+  checks: write
 
 on: pull_request_target
 
