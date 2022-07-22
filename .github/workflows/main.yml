@@ -16,15 +16,14 @@ permissions:
   checks: write
 
 jobs:
-  build:
+  run-pitest:
     runs-on: ubuntu-latest
-
     name: mutation testing
-
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-      - name: gradle check pitest
+      - name: Run pitest
         uses: eskatos/gradle-command-action@v2.2.1
         with:
           arguments: check pitest
