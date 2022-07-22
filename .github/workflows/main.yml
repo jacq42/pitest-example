@@ -23,10 +23,18 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Run pitest
-        uses: eskatos/gradle-command-action@v2.2.2
+      - name: Setup Java
+        uses: actions/setup-java@v3
         with:
-          arguments: check pitest
+          distribution: temurin
+          java-version: 17
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+
+      - name: Run build with Gradle wrapper
+        id: gradle
+        run: ./gradlew check pitest
 
       - name: Upload PIT report
         if: always()
