@@ -31,10 +31,9 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
-
-      - name: Run build with Gradle wrapper
-        id: gradle
-        run: ./gradlew check pitest
+        with:
+          arguments: check pitest
+          cache-disabled: true
 
       - name: Upload PIT report
         if: always()
