@@ -29,6 +29,13 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 17
+          cache: 'gradle'
+
       - name: Build and test
         uses: eskatos/gradle-command-action@v2.2.2
         with:
