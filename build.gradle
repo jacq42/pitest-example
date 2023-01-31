@@ -29,8 +29,8 @@ test {
 pitest {
   // Config params: https://pitest.org/quickstart/commandline/
   testPlugin = 'junit5'
-  pitestVersion = '1.7.1'
-  junit5PluginVersion = '0.15'
+  pitestVersion = '1.9.0'
+  junit5PluginVersion = '1.0.0'
 
   targetClasses = ['de.jkrech.tutorial.*']
   //excludedClasses = ['de.jkrech.tutorial.config.*']
