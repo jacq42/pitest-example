@@ -30,7 +30,7 @@ jobs:
           java-version: 17
 
       - name: Setup gradle and execute pitest
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: check pitest
           cache-disabled: true
